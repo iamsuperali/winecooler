@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     @categories = Category.find(:all)
   end
   
+  def after_sign_in_path_for(resource)
+    "/posts"
+  end
+  
+  
   #
   #    def ckeditor_filebrowser_scope(options = {})
   #      super({ :assetable_id => current_user.id, :assetable_type => 'User' }.merge(options))
