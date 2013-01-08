@@ -1,0 +1,48 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="fr" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="fr" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="fr" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="fr" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>深圳拉苏米亚红酒柜</title>
+    <meta name="description" content="深圳拉苏米亚红酒柜" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <%= stylesheet_link_tag "home", :media => "all" %>
+    <%= javascript_include_tag :application %>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      function AjouterFavoris() 
+      { // On crée la fonction AjouterFavoris()
+
+        if ( navigator.appName != 'Microsoft Internet Explorer' ) 
+        { // Si le navigateur est Internet Explorer
+          window.sidebar.addPanel("La Sommelière Int.", "http://www.lasommeliere.com/", ""); // Alors on utilise la fonction window.sidebar.addPanel("Nom utilisé pour enregistrer le site", "Adresse du site web", "")
+        }
+
+        else 
+        { // Sinon, si le navigateur n'est pas Internet Explorer
+          window.external.AddFavorite("http://www.lasommeliere.com/", "La Sommelière Int."); // Alors on utilise la fonction window.external.AddFavorite("Nom utilisé pour enregistrer le site", "Adresse du site web")
+        }
+
+      }
+      //]]>
+    </script>   
+  </head>
+  <body   style="margin:0;padding:0;" >
+    <%=render :partial =>"/layouts/banner"%>
+    <%= yield %>
+    <%=render :partial =>"/layouts/footer"%>
+
+
+    <!--[if lt IE 7 ]>
+        <script src="http://www.lasommeliere.com/js/dd_belatedpng.js"></script>
+        <script> DD_belatedPNG.fix('img, .png_bg'); </script>
+    <![endif]-->
+  </body>
+</html>
+

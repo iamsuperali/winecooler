@@ -1,0 +1,25 @@
+<h3>红酒柜列表</h3>
+
+<table class="admin">
+  <tr>
+    <th>分类</th>
+    <th>型号</th>
+    <th colspan="3" ></th>
+  </tr>
+
+  <% @winecoolers.each do |c| %>
+    <tr>
+      <td class="spec"><%= c.category.name %></td>
+      <td><%= c.model %></td>
+      <td class="action-link"><%= link_to '查看', c %></td>
+      <td class="action-link"><%= link_to '编辑', edit_winecooler_path(c) %></td>
+      <td class="action-link"><%= link_to '删除', c, method: :delete, data: { confirm: '您确定?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to '新增红酒柜', new_winecooler_path %>
+
+

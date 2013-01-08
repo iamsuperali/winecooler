@@ -1,0 +1,74 @@
+<div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate_bg.jpg")%>')"">
+  <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
+    <h3><%=@category.name%></h3>
+    <p class="accrochePage"></p>
+  </div>
+</div>
+<div id="centreSite" class="body">
+  <div id="contenuCentre">
+    <div id="menuG">
+      <ul>
+        <li><span class="titreRubMenuG"><%=@category.name%></span>
+          <ul>
+            <%@category.winecoolers.each do |w|%>
+              <li>
+                <a href="/winecoolers/<%=w.id%>" title="<%=w.model%>" style="background-color:#d61260;" onmouseover="this.style.color='#d61260';" onmouseout="this.style.color='#ffffff';" <%="class='actif'".html_safe if w == @winecooler%> >
+                  <%=w.model%>
+                </a>
+              </li>
+            <%end%>
+            <br style="clear: both;" />
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="colM">
+      <div>
+        <div class="ImgEnteteGamme">
+          <a href="<%=asset_path("page-gamme-prestige.png")%>" target="_parent">
+            <img class="Loupe" src="/images/skins/commun/loupe.png" alt="Loupe" />
+            <img src="<%=asset_path("page-gamme-prestige275.png")%>" alt="Gamme Prestige" width="188" height="234" />
+          </a>
+        </div>
+        <div class="TxtEnteteGamme">
+          <!--p>Toutes les caves de la gamme Prestige sont &eacute;quip&eacute;es de :</p-->
+        </div>  
+      </div>
+      <div class='clear'></div>
+      <div class="blocListeGamme">
+        <div class="titreListeGamme">
+          <!--span class="savoirPlus"><img src="images/skins/commun/pucePlus.gif" alt="Plus"> Plus d'infos</span-->
+          <span class="savoirPlusMasque" style="display:none;"><img src="/images/skins/commun/puceMoins.gif" alt="Plus"> Masquer</span>
+          <h2><%=@category.name%></h2>
+        </div>
+        <div class="savoirPlusDeplie" style="display:none;">
+          <p>Avec ces caves mixtes, vous vieillissez et mettez vos bouteilles à température simultanément.<br>Réglez la température minimale en bas de la cave et la température maximale en haut de celle-ci. L’écart entre ces deux températures se divise automatiquement pour vous offrir jusqu’à 6 zones de températures différentes. Si vous souhaitez que votre cave n’offre qu’une seule et même température, vous sélectionnez une température minimale et maximale identique.<br><br><img src="/donnees/cms/originales/bande-multitemperature-2.jpg" alt="" data-mce-src="/donnees/cms/originales/bande-multitemperature-2.jpg" height="68" width="665"><br></p>	</div>
+        <div class="capsBlocListeGamme">
+          <%@category.winecoolers.each do |w|%>
+            <table class="capsProdBlocListeGamme">
+              <tr>
+                <td class="imgListeGamme">
+                  <div>
+                    <img src="<%=Upload.find(:first,["winecooler_id = ?",w.id]).upload.url(:thumb)%>" alt="<%=w.model%>" onClick="document.location.href='/winecoolers/<%=w.id%>'">
+                  </div>
+                </td>
+                <td>
+                  <h3><a href="/winecoolers/<%=w.id%>"><%=w.model%></a></h3>
+                  <p><%= (truncate(strip_tags(w.desc), :length => 100, :omission => '...')).html_safe %></p>
+                  <a href="/winecoolers/<%=w.id%>" title="<%=w.model%>" class="plusdinfo">
+                    <div style="background-color:#d61260;" class="puceCouleur"><img src="/images/skins/commun/puce.png" /></div>
+                    <span>详细</span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          <%end%>
+          <br style="clear: both;" />
+          <br class="magicHeight">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear:both;" ></div>
+</div>

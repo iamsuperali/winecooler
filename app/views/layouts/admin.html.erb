@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>深圳拉苏米亚红酒柜 - 管理后台</title>
+    <%= stylesheet_link_tag    "admin" %>
+    <%= javascript_include_tag "admin" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="tree-container">
+      <ul id="menu">
+        <li><a id="home-link" href="/" class="admin-menu-links">回到首页</a></li>
+        <li><a id="caves-link" class="admin-menu-links" href="/winecoolers">红酒柜管理</a>
+          <!--ul>
+            <li><a href="/caves/new">新增酒柜</a></li>
+          </ul-->
+        </li>
+        <li><a id="cates-link" href="/categories" class="admin-menu-links">酒柜分类</a>
+          <!--ul>
+            <li><a href="/categories/new">新增酒柜分类</a></li>
+          </ul-->
+        </li>
+
+        <li>
+          <a  id="news_link" href="/posts" class="admin-menu-links">新闻管理</a>
+        </li>
+
+        <li>
+          <a  id="pages-link" href="/pages" class="admin-menu-links">页面管理</a>
+        </li>
+
+        <li><a id="slides-link" href="/slides" class="admin-menu-links">首页幻灯</a></li>
+
+        <!--li>
+        <%= link_to "修改密码", edit_user_password_path(current_user),:class=>"admin-menu-links"  %>
+        </li-->
+        <li>
+          <%= link_to "退出登陆", destroy_user_session_path, :method => :delete,:id=>"logout_link",:class=>"admin-menu-links" %>
+        </li>
+      </ul>
+
+    </div>
+
+    <div id="main-content">
+
+      <div id="admin-banner">
+        <img src="<%=asset_path "admin/admin_logo.png"%>" />
+      </div>
+      <p class="notice"><%= notice.html_safe if notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+
+    <div id="footer">
+      <div>
+        <span><a href="/">返回首页</a></span><span>技术支持：iamsuperali@126.com</span>   <span>qq：19195591</span>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<script type="text/javascript">
+  $('#myGallery').spacegallery({loadingClass: 'loading'});
+</script>
+<div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
+  <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
+    <h3><%=@winecooler.category.name%></h3>
+    <!--p class="accrochePage"></p-->
+  </div>
+</div><div id="centreSite" class="body"><div id="contenuCentre">
+
+    <div id="menuG">
+      <ul>
+        <li><span class="titreRubMenuG"><%=@winecooler.category.name%></span>
+          <ul>
+            <%@winecooler.category.winecoolers.each do |w|%>
+              <li>
+                <a href="/winecoolers/<%=w.id%>" title="<%=w.model%>" style="background-color:#d61260;" onmouseover="this.style.color='#d61260';" onmouseout="this.style.color='#ffffff';" <%="class='actif'".html_safe if w == @winecooler%> >
+                  <%=w.model%>
+                </a>
+              </li>
+            <%end%>
+            <br style="clear: both;" />	</ul>
+        </li>
+      </ul>
+
+    </div>
+    <style>
+      #submitPublier {
+        background-color:#d61260;
+      }
+    </style>
+    <div class="colM">
+      <div class="ProduitDescription">
+        <div class="titreProduit">
+          <h1 style="color:#d61260"><span id="h1_titre">VIP195N</span></h1>
+          <p></p>
+        </div>
+        <div class="ProduitDescriptionDetail">
+          <div class="AvantagesProduit">
+            <p class="titreAvantages" style="color:#d61260">特点:</p>
+            <!--ul>
+              <li>Cave &agrave; vin mixte, vieillissement et service, multi temp&eacute;ratures (jusqu&rsquo;&agrave; 6 zones)</li>
+              <li>Hygrom&eacute;trie r&eacute;gul&eacute;e</li>
+              <li>S&eacute;curit&eacute; hiver et serrure</li>
+              <li>Clayettes de pr&eacute;sentation et coulissante incluses</li>
+              <li>Filtre &agrave; charbons, air brass&eacute;</li>
+            </ul-->
+          </div>
+
+        </div>
+
+        <div class="sliderProduit">
+          <div style="width:414px; text-align:center;">
+            <div id="myGallery" class="spacegallery">
+              <%url_string = Upload.find(:first,["winecooler_id = ?",@winecooler.id]).upload.url(:thumb)%>
+              <a href="<%=url_string%>" target="_parent">
+                <img src="<%=url_string%>" alt="Gamme Prestige" height="190" />
+              </a>
+            </div>
+          </div>		
+        </div>
+      </div>
+
+      <div class="produitCaracteristiques">
+        <div class="ProduitDescriptionDetail">
+
+        </div>
+        <div id="scroller-header" data-color="#d61260" >
+          <a href="#panel-1" rel="panel" class="selected" >简介</a>
+          <a href="#panel-2" rel="panel">其他1</a>
+          <a href="#panel-3" rel="panel">其他2</a>
+        </div>
+        <div id="scroller-body">
+          <div id="mask">
+            <div id="panel">
+              <div id="panel-1">
+                <table class="caracteristiquesProduitDetail">
+                  <tr>
+                    <td width="50%">
+                      <%=@winecooler.desc.html_safe%>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div id="panel-2">
+                <p>
+
+                </p>
+              </div>
+              <div id="panel-3" style="padding-top:7px;">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="rubriqueProduitEnCours" value="30">
+    <div style="display:none;">
+      <a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-01.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg1">
+        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-01.jpg" border="0" />
+      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-03.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg2">
+        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-03.jpg" border="0" />
+      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-05.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg3">
+        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-05.jpg" border="0" />
+      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-04.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg4">
+        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-04.jpg" border="0" />
+      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-07.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg5">
+        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-07.jpg" border="0" />
+      </a></div>
+    <br style="clear: both;">
+
+  </div></div><div style="clear:both;" ></div></div>

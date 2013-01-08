@@ -1,0 +1,37 @@
+<header class="headerLangfr_FR">
+  <div class="Header">
+
+    <img src="/images/skins/commun/logo.jpg" alt="La sommelière" onClick="window.location.href='/index.php'" class="logo">
+    <!--div class="Social">
+      <g:plusone size="medium" annotation="none"></g:plusone>
+      <a href="http://www.lasommeliere.com//"><img src="http://www.lasommeliere.com/images/skins/commun/drapeauFr.jpg" alt="" style="vertical-align: text-bottom;"></a>
+      <a href="http://en.lasommeliere.com/"><img src="http://www.lasommeliere.com/images/skins/commun/drapeauEnGris.jpg" alt="" style="vertical-align: text-bottom;"></a>
+    </div-->
+    <form action="/home/search" method="get" accept-charset="utf-8">
+      <input type="text" name="keyword" id="Text" value="">
+      <input type="submit" value="OK" id="Submit">
+    </form>
+    <nav>
+
+      <ul>
+        <li class="ssMenu actif"><a href="/" class='menuactive'>首页</a></li>
+        <li class="ssMenu"><a href='/pages/1'>公司介绍</a>    
+          <ul id='menu_9' class='sous_menu_0' style='display:none;'>
+            <li class="ssMenu"><a href='/pages/1'>公司简介</a></li>
+            <li class="ssMenu"><a href='/pages/2'>产品质量</a></li>
+          </ul>
+        </li>
+        <li class="ssMenu"><a href='/home/news' >公司新闻</a>
+        <li class="ssMenu"><a href='/home/categories' >产品介绍</a>    
+          <ul id='menu_15' class='sous_menu_0' style='display:none;'>
+            <% @categories.each do |c| %>
+              <li class="ssMenu"><a href='/categories/<%=c.id%>' ><%=c.name%></a></li>
+            <%end%>
+          </ul>
+        </li>
+        <li class="ssMenu"><a href='/pages/3' >联系我们</a></li>
+      </ul>
+
+    </nav>
+  </div>
+</header>

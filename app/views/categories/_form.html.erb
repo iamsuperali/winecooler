@@ -1,0 +1,35 @@
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag "名称" %>:
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "状态" %>:
+    <%= f.select(:status,status_list) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "描述" %>:
+    <%= f.text_area :desc,:rows=>5; %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bg,"背景图片(尺寸:941x207)" %>:
+    <%= f.file_field :bg %>
+  </div>
+  <div class="actions">
+    <%= f.submit "确定" %>
+  </div>
+<% end %>

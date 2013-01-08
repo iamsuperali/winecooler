@@ -1,0 +1,95 @@
+<style>
+  a:hover#id-link1, #links a#id-link1.current {
+    background-color: #E8CB9C; }a:hover#id-link2, #links a#id-link2.current {
+    background-color: #D25D8B; }a:hover#id-link3, #links a#id-link3.current {
+    background-color: #D87E5E; }a:hover#id-link4, #links a#id-link4.current {
+    background-color: #9E388F; }a:hover#id-link5, #links a#id-link5.current {
+    background-color: #600119; }a:hover#id-link6, #links a#id-link6.current {
+    background-color: #E8CB9C; }
+  </style>	
+  <div id="slider">
+  <h1 class="accrocheSlider">拉苏米亚 <br><span>红酒柜</span></h1>
+  <img src="/images/skins/commun/loader.gif" style='display:none;' />
+  <div id="mask-gallery">
+    <ul id="gallery">
+      <%s_count = 1%>
+      <%@slides.each do |s|%>
+        <li class="item<%=s_count%>">
+          <a href="<%s.link%>"  class="">
+            <%= image_tag s.image.url,:width=>"1300",:height=>"448",:style=>"display:none;" %>
+          </a>
+        </li>
+        <%s_count += 1%>
+      <%end%>	
+    </ul>
+  </div>
+
+
+  <div id="links">
+    <%l_count = 1%>
+    <%@slides.each do |s|%>
+      <a href="<%=s.link%>" rel="item<%=l_count%>" id="id-link<%=l_count%>" class="" >
+        <h2><%=s.title%></h2>
+      </a>
+      <%l_count += 1%>
+    <%end%>
+  </div>
+</div>
+<div style="clear:both;" ></div>
+
+<footer  class="accueilFoot"  >
+  <div class="capsFoot">
+    <div class="col13">
+      <table cellpadding="0" cellspacing="0">
+        <%@winecoolers.each do |w|%>
+          <tr>
+            <td>
+              <img onClick="document.location.href='/winecoolers/<%=w.id%>'" 
+                   src="<%=Upload.find(:first,["winecooler_id = ?",w.id]).upload.url(:thumb)%>" height="60" alt="<%=w.model%>"/>
+            </td>
+            <td>
+              <div class="menu2foot">
+                <div class="smallTitre">
+                  <a href="/winecoolers/<%=w.id%>">
+                    <span><%=w.model%></span>									 
+                  </a>
+                </div>
+                <p>
+                  <%= (truncate(strip_tags(w.desc), :length => 200, :omission => '...')).html_safe %>
+                </p>
+              </div>
+            </td>
+          </tr>
+        <%end%>
+      </table>
+    </div>
+    <div class="col23">
+      <div class="titreMoyen">
+        <span>公司新闻</span><br><!--span class="txtGris">内容</span-->
+      </div>
+      <!--  
+      <img onClick="document.location.href='#'" src="http://www.lasommeliere.com/images/skins/commun/serviceClient.jpg" alt="Service client" class="imgLeft" style="margin-top:10px;"/>
+      <p>详细内容...</p>
+      <br class="magicHeight">
+      -->
+      <ul>
+        <%@posts.each do |p|%>
+          <li>
+            <a href="/posts/<%=p.id%>" title="<%=p.title%>"><%=p.title%></a>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+    <!--div class="col33">
+      <div class="titreMoyen">
+        <span>首页栏目4</span><br><span class="txtGris">内容</div>
+      <img src="http://www.lasommeliere.com/images/skins/commun/cart.jpg" alt="Carte" style="margin-top:10px; cursor:default;" />
+      <p>详细内容...</p>
+      <div style="height:140px;">
+
+      </div>  
+    </div-->
+
+    <hr class="magicHeight">
+  </div>
+</footer>

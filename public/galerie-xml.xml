@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<icons>
+    <icon image="http://www.lasommeliere.com/donnees/produits/400x240/la-sommeliere-cave-vin-vip195n-01.jpg" action="javascript:lanceZoomNoir(1);" target="_self"  titre="" desc="" />
+    <icon image="http://www.lasommeliere.com/donnees/produits/400x240/la-sommeliere-cave-vin-vip195n-03.jpg" action="javascript:lanceZoomNoir(2);" target="_self"  titre="" desc="" />
+    <icon image="http://www.lasommeliere.com/donnees/produits/400x240/la-sommeliere-cave-vin-vip195n-05.jpg" action="javascript:lanceZoomNoir(3);" target="_self"  titre="" desc="" />
+    <icon image="http://www.lasommeliere.com/donnees/produits/400x240/la-sommeliere-cave-vin-vip195n-04.jpg" action="javascript:lanceZoomNoir(4);" target="_self"  titre="" desc="" />
+    <icon image="http://www.lasommeliere.com/donnees/produits/400x240/la-sommeliere-cave-vin-vip195n-07.jpg" action="javascript:lanceZoomNoir(5);" target="_self"  titre="" desc="" />
+</icons>

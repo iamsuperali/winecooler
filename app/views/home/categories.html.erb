@@ -1,0 +1,16 @@
+<div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate_bg.jpg")%>')">
+  <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
+    <h3>产品系列</h3>
+    <p class="accrochePage"></p>
+  </div>
+</div>
+<div id="centreSite" class="body"><div id="contenuCentre">
+    <%@categories.each do |c|%>
+      <div class="ListeRub">
+        <div style="background-image: url('<%=c.bg.url(:content)%>');" >
+          <p><%=c.desc%></p>
+          <a href="/categories/<%=c.id%>" title="<%=c.name%>" style="background-color:#d61260;"><%=c.name%></a>
+        </div>
+      </div>
+    <%end%>
+  </div><div style="clear:both;" ></div></div>

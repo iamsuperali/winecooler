@@ -1,0 +1,24 @@
+<h3>分类列表</h3>
+
+<table class="admin">
+  <tr>
+    <th>名称</th>
+    <th>背景</th>
+    <th>状态</th>
+    <th colspan="2" >操作</th>
+  </tr>
+
+  <% @categories.each do |category| %>
+    <tr>
+      <th scope="row"class="spec"><%= category.name %></th>
+      <td><%= image_tag category.bg.url(:thumb) %></td>
+      <td class="action-link"><%= format_status(category.status) %></td>
+      <td class="action-link"><%= link_to '编辑', edit_category_path(category) %></td>
+      <td class="action-link"><%= link_to '删除', category, method: :delete, data: { confirm: '确定删除?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+<%= will_paginate @categories,:previous_label=>"上一页",:next_label=>"下一页",:class=>"apple_pagination"  %>
+<%= link_to '新增分类', new_category_path %>
