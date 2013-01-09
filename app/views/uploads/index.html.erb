@@ -121,8 +121,7 @@
     $('#fileupload').fileupload();
     // 
     // Load existing files:
-    //$.getJSON($('#fileupload').prop('action'), function (files) {
-    $.getJSON('/uploads/?cave_id=<%=@cave.id%>', function (files) {
+    $.getJSON($('#fileupload').prop('action'), function (files) {
       var fu = $('#fileupload').data('fileupload'), 
       template;
       fu._adjustMaxNumberOfFiles(-files.length);

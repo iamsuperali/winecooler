@@ -4,7 +4,12 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.find_all_by_winecooler_id(params[:winecooler_id])
+    if params[:winecooler_id]
+      @uploads = Upload.find_all_by_winecooler_id(params[:winecooler_id])
+    else
+      @uploads = Upload.all
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb

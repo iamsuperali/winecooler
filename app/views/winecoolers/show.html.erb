@@ -38,13 +38,7 @@
         <div class="ProduitDescriptionDetail">
           <div class="AvantagesProduit">
             <p class="titreAvantages" style="color:#d61260">特点:</p>
-            <!--ul>
-              <li>Cave &agrave; vin mixte, vieillissement et service, multi temp&eacute;ratures (jusqu&rsquo;&agrave; 6 zones)</li>
-              <li>Hygrom&eacute;trie r&eacute;gul&eacute;e</li>
-              <li>S&eacute;curit&eacute; hiver et serrure</li>
-              <li>Clayettes de pr&eacute;sentation et coulissante incluses</li>
-              <li>Filtre &agrave; charbons, air brass&eacute;</li>
-            </ul-->
+            <%=@winecooler.feature.html_safe%>
           </div>
 
         </div>
@@ -52,7 +46,7 @@
         <div class="sliderProduit">
           <div style="width:414px; text-align:center;">
             <div id="myGallery" class="spacegallery">
-              <%url_string = Upload.find(:first,["winecooler_id = ?",@winecooler.id]).upload.url(:thumb)%>
+              <%url_string = Upload.where(:winecooler_id=>@winecooler.id).first.upload.url(:thumb)%>
               <a href="<%=url_string%>" target="_parent">
                 <img src="<%=url_string%>" alt="Gamme Prestige" height="190" />
               </a>

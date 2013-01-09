@@ -165,6 +165,20 @@
   </div>
 
   <div class="field">
+    <%= f.label :feature,"特点"  %>:
+    <%= f.cktext_area :feature,
+      :toolbar => 'Full',
+      :width => 800,
+      :height => 100,
+      :language => 'zh-cn',
+      :filebrowserBrowseUrl => "/ckeditor/attachment_files",
+      :filebrowserUploadUrl => "/ckeditor/attachment_files",
+      :filebrowserImageBrowseUrl => "/ckeditor/pictures",
+      :filebrowserImageUploadUrl => "/ckeditor/pictures"
+  %>
+  </div>
+
+  <div class="field">
     <%= f.label :desc,"描述"  %>:
     <%= f.cktext_area :desc,
       :toolbar => 'Full',
