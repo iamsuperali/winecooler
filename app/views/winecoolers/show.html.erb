@@ -48,10 +48,13 @@
         <div class="sliderProduit">
           <div style="width:414px; text-align:center;">
             <div id="myGallery" class="spacegallery">
-              <%url_string = Upload.where(:winecooler_id=>@winecooler.id).first.upload.url(:thumb)%>
-              <a href="<%=url_string%>" target="_parent">
-                <img src="<%=url_string%>" alt="Gamme Prestige" height="190" />
-              </a>
+              <% cur_upload = Upload.where(:winecooler_id=>@winecooler.id).first %>
+              <% if cur_upload %>
+                <%url_string = cur_upload.upload.url(:thumb)%>
+                <a href="<%=url_string%>" target="_parent">
+                  <img src="<%=url_string%>" alt="Gamme Prestige" height="190" />
+                </a>
+              <%end%>
             </div>
           </div>		
         </div>

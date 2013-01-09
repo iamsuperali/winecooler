@@ -44,8 +44,15 @@
         <%@winecoolers.each do |w|%>
           <tr>
             <td>
-              <img onClick="document.location.href='/winecoolers/<%=w.id%>'" 
-                   src="<%=Upload.find(:first,["winecooler_id = ?",w.id]).upload.url(:thumb)%>" height="60" alt="<%=w.model%>"/>
+              <% cur_upload = Upload.where(:winecooler_id=>w.id).first %>
+              <% if cur_upload %>               
+                <%url_string = cur_upload.upload.url(:thumb)%>
+                <a href="<%=url_string%>" target="_parent">
+                  <img onClick="document.location.href='/winecoolers/<%=w.id%>'" 
+                       src="<%=url_string%>" height="60" alt="<%=w.model%>"/>
+                </a>
+              <%end%>
+
             </td>
             <td>
               <div class="menu2foot">
