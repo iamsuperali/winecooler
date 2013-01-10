@@ -50,7 +50,9 @@
               <tr>
                 <td class="imgListeGamme">
                   <div>
-                    <img src="<%=Upload.find(:first,["winecooler_id = ?",w.id]).upload.url(:thumb)%>" alt="<%=w.model%>" onClick="document.location.href='/winecoolers/<%=w.id%>'">
+                    <% if w.uploads && w.uploads.length > 0 %>
+                      <img src="<%=w.uploads[0].upload.url(:thumb)%>" alt="<%=w.model%>" onClick="document.location.href='/winecoolers/<%=w.id%>'">
+                    <%end%>
                   </div>
                 </td>
                 <td>
