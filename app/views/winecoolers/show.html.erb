@@ -1,5 +1,22 @@
 <script type="text/javascript">
-  $('#myGallery').spacegallery({loadingClass: 'loading'});
+  $(document).ready(function(){
+						   
+    // This initialises carousels on the container elements specified, in this case, carousel1.
+    $("#carousel1").CloudCarousel(		
+    {			
+      reflHeight: 46,
+      reflGap:2,
+      yRadius:40,
+      xPos: 200,
+      yPos: 20,
+      speed:0.15,
+      buttonLeft: $("#left-but"),
+      buttonRight: $("#right-but"),
+      altBox: $("#alt-text"),
+      titleBox: $("#title-text")
+    }
+  );
+  });
 </script>
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
   <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
@@ -46,67 +63,80 @@
         </div>
 
         <div class="sliderProduit">
-          <div style="width:414px; text-align:center;">
-            <div id="myGallery" class="spacegallery">
-              <% cur_upload = Upload.where(:winecooler_id=>@winecooler.id).first %>
-              <% if cur_upload %>
-                <%url_string = cur_upload.upload.url(:thumb)%>
-                <a href="<%=url_string%>" target="_parent">
-                  <img src="<%=url_string%>" alt="Gamme Prestige" height="190" />
+          <div id="carousel1" style="width:414px;height:300px;text-align:center;overflow:scroll;">
+            <% if @uploads && @uploads.length > 0  %>
+              <% count=0 %>
+              <% @uploads.each do |u| %>
+                <% count+=1 %>
+                <%url_string = u.upload.url(:thumb)%>
+                <a href="javascript:lanceZoomNoir(<%=count%>);" target="_self">
+                  <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" height="190" />
                 </a>
               <%end%>
-            </div>
-          </div>		
+
+            <%end%>
+          </div>
+
+          <div id="carousel_button">
+            <input id="left-but"  type="button" value="" />
+            <input id="right-but" type="button" value="" />
+          </div>
+
+          <!-- Define elements to accept the alt and title text from the images. -->
+          <p id="title-text"></p>
+          <p id="alt-text"></p>
         </div>
-      </div>
 
-      <div class="produitCaracteristiques">
-        <div class="ProduitDescriptionDetail">
+        <div class="produitCaracteristiques">
+          <div class="ProduitDescriptionDetail">
 
-        </div>
-        <div id="scroller-header" data-color="#d61260" >
-          <a href="#panel-1" rel="panel" class="selected" >简介</a>
-          <a href="#panel-2" rel="panel">其他1</a>
-          <a href="#panel-3" rel="panel">其他2</a>
-        </div>
-        <div id="scroller-body">
-          <div id="mask">
-            <div id="panel">
-              <div id="panel-1">
-                <table class="caracteristiquesProduitDetail">
-                  <tr>
-                    <td width="50%">
-                      <%=@winecooler.desc.html_safe%>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div id="panel-2">
-                <p>
+          </div>
+          <div id="scroller-header" data-color="#d61260" >
+            <a href="#panel-1" rel="panel" class="selected" >简介</a>
+            <a href="#panel-2" rel="panel">其他1</a>
+            <a href="#panel-3" rel="panel">其他2</a>
+          </div>
+          <div id="scroller-body">
+            <div id="mask">
+              <div id="panel">
+                <div id="panel-1">
+                  <table class="caracteristiquesProduitDetail">
+                    <tr>
+                      <td width="50%">
+                        <%=@winecooler.desc.html_safe%>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div id="panel-2">
+                  <p>
 
-                </p>
-              </div>
-              <div id="panel-3" style="padding-top:7px;">
+                  </p>
+                </div>
+                <div id="panel-3" style="padding-top:7px;">
 
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <input type="hidden" id="rubriqueProduitEnCours" value="30">
-    <div style="display:none;">
-      <a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-01.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg1">
-        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-01.jpg" border="0" />
-      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-03.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg2">
-        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-03.jpg" border="0" />
-      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-05.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg3">
-        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-05.jpg" border="0" />
-      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-04.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg4">
-        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-04.jpg" border="0" />
-      </a><a href="/donnees/produits/800x600/la-sommeliere-cave-vin-vip195n-07.jpg" rel="gallery1" class="zoomslide gallery1" title="VIP195N" id="lienImg5">
-        <img src="/donnees/produits/62x59/la-sommeliere-cave-vin-vip195n-07.jpg" border="0" />
-      </a></div>
-    <br style="clear: both;">
+      <!--配件预留位置
+      <input type="hidden" id="rubriqueProduitEnCours" value="30"-->
+      <div style="display:none;">
+        <% if @uploads && @uploads.length > 0  %>
+          <% count = 0 %>
+          <% @uploads.each do |u| %>
+            <% count +=1 %>
+            <%url_string = u.upload.url(:thumb)%>
+            <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="" id="lienImg<%=count%>">
+              <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
+            </a>
+          <%end%>
 
-  </div></div><div style="clear:both;" ></div></div>
+        <%end%>
+
+      </div>
+      <br style="clear: both;">
+
+    </div></div><div style="clear:both;" ></div></div>

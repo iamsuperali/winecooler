@@ -4890,3 +4890,37 @@ a:hover.lienPanier,a:hover.lienCompte {
 #panel-1,#panel-2,#panel-3{
    min-height:300px;
 }
+
+#carousel_button{
+    position:relative;
+    top:-40px;
+}
+
+.shadow{
+    filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=5);/*for ie6,7,8*/
+    background-color: #eee;
+    -moz-box-shadow:2px 2px 5px #969696;/*firefox*/
+    -webkit-box-shadow:2px 2px 5px #969696;/*webkit*/
+    box-shadow:2px 2px 5px #969696;/*opera或ie9*/
+}
+
+#left-but,#right-but{
+    width: 40px;
+    height:40px;
+    background: url('/images/arrow_btn_bg.png') no-repeat;
+    border:none;
+    cursor:pointer;
+}
+
+#right-but{
+    background-position: -40px 0px;
+}
+
+#left-but:hover{
+    background-position: 0px -1px;
+}
+
+#right-but:hover{
+    background-position: -40px -1px;
+}
+
