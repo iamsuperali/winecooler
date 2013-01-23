@@ -129,7 +129,7 @@
           <% @uploads.each do |u| %>
             <% count +=1 %>
             <%url_string = u.upload.url(:thumb)%>
-            <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="" id="lienImg<%=count%>">
+            <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="<%=u.winecooler.model%>" id="lienImg<%=count%>">
               <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
             </a>
           <%end%>
