@@ -23,7 +23,9 @@
     <h3><%=@winecooler.category.name%></h3>
     <!--p class="accrochePage"></p-->
   </div>
-</div><div id="centreSite" class="body"><div id="contenuCentre">
+</div>
+
+<div id="centreSite" class="body"><div id="contenuCentre">
 
     <div id="menuG">
       <ul>
@@ -49,7 +51,7 @@
     <div class="colM">
       <div class="ProduitDescription">
         <div class="titreProduit">
-          <h1 style="color:#d61260"><span id="h1_titre">VIP195N</span></h1>
+          <h1 style="color:#d61260"><span id="h1_titre"><%=@winecooler.model%></span></h1>
           <p></p>
         </div>
         <div class="ProduitDescriptionDetail">
@@ -59,7 +61,26 @@
               <%=@winecooler.feature.html_safe %>
             <%end%>
           </div>
-
+          <table class="liensProduit">
+            <tbody>
+              <tr>
+                <td width="50%">
+                  <a href="">
+                    <img src="<%=asset_path("where.png")%>" alt="到哪购买?" title="到哪购买?">
+                    <span>到哪购买?</span>
+                  </a>
+                </td>
+                <td width="50%">
+                  <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=iamsuperali',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','',
+                     '<%= HomeHelper::ROOT + @winecooler.uploads.first.upload.url(:thumb) if @winecooler.uploads && @winecooler.uploads.length > 0%>',
+                     '深圳拉苏米亚红酒柜<%=@winecooler.model%>,<%=(truncate(strip_tags(@winecooler.desc), :length => 100, :omission => '...')).html_safe %>',
+                     '',
+                     'utf-8'));">
+                    <img src="<%=asset_path("weibo.png")%>" alt="分享到微博" title="分享到微博"><span>分享到微博</span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="sliderProduit">
@@ -89,12 +110,23 @@
 
         <div class="produitCaracteristiques">
           <div class="ProduitDescriptionDetail">
+            <div class="AccessoiresProduit" style="background-color:#d61260;">
+              配件:
+            </div>
+            <table class="tableAccessoires" style="display:none;">
+              <tr>
+                <td><a href="/P-61-63-A1-clavip01.html"><img src="/donnees/produits/70x61/la-sommeliere-cave-vin-accessoires-clavip01-02.jpg" alt="CLAVIP01"></a></td>
+                <td><a href="/P-61-63-A1-clavip01.html"><b>CLAVIP01</b>
 
+                    <br />Clayette Chêne
+                  </a></td>
+              </tr>
+            </table>
           </div>
           <div id="scroller-header" data-color="#d61260" >
             <a href="#panel-1" rel="panel" class="selected" >简介</a>
-            <a href="#panel-2" rel="panel">其他1</a>
-            <a href="#panel-3" rel="panel">其他2</a>
+            <!--a href="#panel-2" rel="panel">其他1</a>
+            <a href="#panel-3" rel="panel">其他2</a-->
           </div>
           <div id="scroller-body">
             <div id="mask">
@@ -139,4 +171,8 @@
       </div>
       <br style="clear: both;">
 
-    </div></div><div style="clear:both;" ></div></div>
+    </div>
+  </div>
+  <div style="clear:both;" ></div>
+
+</div>

@@ -2,11 +2,11 @@
   <div class="Header">
 
     <img src="/images/skins/commun/logo.jpg" alt="La sommelière" onClick="window.location.href='/index.php'" class="logo">
-    <!--div class="Social">
-      <g:plusone size="medium" annotation="none"></g:plusone>
-      <a href="http://www.lasommeliere.com//"><img src="http://www.lasommeliere.com/images/skins/commun/drapeauFr.jpg" alt="" style="vertical-align: text-bottom;"></a>
-      <a href="http://en.lasommeliere.com/"><img src="http://www.lasommeliere.com/images/skins/commun/drapeauEnGris.jpg" alt="" style="vertical-align: text-bottom;"></a>
-    </div-->
+    <div class="Social">
+      <a href="" onclick="AjouterFavoris(); return false;" id="btn-fav"></a>
+      <a target="_self" href="http://wpa.qq.com/msgrd?v=3&uin=674581025&site=qq&menu=yes"  id="btn-qq"></a>
+      <a target="_blank" href="http://www.lasommeliere.com/" id="btn-global"></a>
+    </div>
     <form action="/home/search" method="get" accept-charset="utf-8">
       <input type="text" name="keyword" id="Text" value="">
       <input type="submit" value="OK" id="Submit">

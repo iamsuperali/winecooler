@@ -41,28 +41,20 @@
   <div class="capsFoot">
     <div class="col13">
       <table cellpadding="0" cellspacing="0">
-        <%@winecoolers.each do |w|%>
+        <%@posts.each do |p|%>
           <tr>
-            <td>
-              <% cur_upload = Upload.where(:winecooler_id=>w.id).first %>
-              <% if cur_upload %>               
-                <%url_string = cur_upload.upload.url(:thumb)%>
-                <a href="<%=url_string%>" target="_parent">
-                  <img onClick="document.location.href='/winecoolers/<%=w.id%>'" 
-                       src="<%=url_string%>" height="60" alt="<%=w.model%>"/>
-                </a>
-              <%end%>
-
+            <td>        
+              <%=generate_feature_image(p,80)%>
             </td>
             <td>
               <div class="menu2foot">
                 <div class="smallTitre">
-                  <a href="/winecoolers/<%=w.id%>">
-                    <span><%=w.model%></span>									 
+                  <a href="/posts/<%=p.id%>">
+                    <span><%=p.title%></span>									 
                   </a>
                 </div>
-                <p>
-                  <%= (truncate(strip_tags(w.desc), :length => 200, :omission => '...')).html_safe %>
+                <p class="index_post_content">
+                  <%= (truncate(strip_tags(p.content), :length => 100, :omission => '...')).html_safe %>
                 </p>
               </div>
             </td>
@@ -71,21 +63,21 @@
       </table>
     </div>
     <div class="col23">
+      <img src="images/skins/commun/cart.jpg" alt="Carte" style="margin-bottom:10px; cursor:default;">
       <div class="titreMoyen">
-        <span>公司新闻</span><br><!--span class="txtGris">内容</span-->
+        <span>
+          公司简介				
+        </span>
+        <br><span class="txtGris">拉苏米亚红酒柜</span>
       </div>
-      <!--  
-      <img onClick="document.location.href='#'" src="http://www.lasommeliere.com/images/skins/commun/serviceClient.jpg" alt="Service client" class="imgLeft" style="margin-top:10px;"/>
-      <p>详细内容...</p>
-      <br class="magicHeight">
-      -->
-      <ul>
-        <%@posts.each do |p|%>
-          <li>
-            <a href="/posts/<%=p.id%>" title="<%=p.title%>"><%=p.title%></a>
-          </li>
-        <%end%>
+      <p>
+        <%= (truncate(strip_tags(Page.find(1).content), :length => 100, :omission => '...')).html_safe %>
+      </p>
+      <ul class="col23-links">
+        <li><a href="/pages/3" style="padding-right:20px;">到哪购买?</a></li>
+        <li><a href="/pages/4">成为分销商</a></li>
       </ul>
+      
     </div>
     <!--div class="col33">
       <div class="titreMoyen">
@@ -93,7 +85,7 @@
       <img src="http://www.lasommeliere.com/images/skins/commun/cart.jpg" alt="Carte" style="margin-top:10px; cursor:default;" />
       <p>详细内容...</p>
       <div style="height:140px;">
-
+  
       </div>  
     </div-->
 

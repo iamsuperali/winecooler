@@ -2344,11 +2344,11 @@ header.headerLangen_EN {
 	text-transform:uppercase;
 }
 .Header nav ul li a {
-	padding:0 10px;
+	padding:0 50px;
 	color:#fff;
 	display:block;
 	text-decoration:none;
-	font-size:14px;
+	font-size:16px;
 }
 .Header nav ul li#ssMenuGammePro {
 	float:right;
@@ -2440,8 +2440,38 @@ header.headerLangen_EN nav ul li#ssMenuGammePro {
 .Social {
 	position:absolute;
 	top:4px;
-	right:94px;
+	right:0px;
 }
+
+.Social a{
+    width: 80px;
+    height: 20px;
+    display:block;
+    float:left;
+    margin-left:10px;
+    background: url('/images/fav_bg.png')
+}
+
+#btn-fav:hover{
+     background-position: -80px 0px;
+}
+
+#btn-qq{
+    background-position: 0px -20px; 
+}
+
+#btn-qq:hover{
+    background-position: -80px -20px; 
+}
+
+#btn-global{
+    background-position: 0px -40px; 
+}
+
+#btn-global:hover{
+    background-position: -80px -40px; 
+}
+
 .liensCompte {
 	position:absolute;
 	top:4px;
@@ -2453,7 +2483,7 @@ header.headerLangen_EN nav ul li#ssMenuGammePro {
 	height:19px;
 	position:absolute;
 	top:29px;
-	right:94px;
+	right:0px;
 	padding-left:1px;
 }
 .Header form input {
@@ -2488,8 +2518,8 @@ header.headerLangen_EN nav ul li#ssMenuGammePro {
 }
 .menu2foot {
 	padding-left:21px;
-	padding-bottom:16px;
-	background:transparent url('/images/skins/commun/ombreHfoot.jpg') right 70px no-repeat;
+	padding-bottom:36px;
+	background:transparent url('/images/skins/commun/ombreHfoot.jpg') right 90px no-repeat;
 }
 footer p {
 	font-family:Arial,Helvetica,sans-serif;
@@ -3097,7 +3127,7 @@ input::-moz-focus-inner {
 	background-color:#969696;
 	color:#FFF;
 	padding:5px 10px;
-	margin-top:10px;
+	margin-top:2px;
 }
 .titreListeGamme h2 {
 	margin:0;
@@ -3306,7 +3336,7 @@ a:hover.plusdinfo,a:hover.comparer {
 	color:#fff;
 	padding-top:5px;
 	padding-left:15px;
-	width:130px;
+	width:420px;
 	margin-left:1px;
 	background:transparent url('/images/skins/commun/tableauProduit.png') 0 0  repeat;
 	height:33px;
@@ -3775,7 +3805,7 @@ a.ArticlePrecedent {
 	margin-left:5px;
 }
 .contenuActu img {
-	padding-right:15px;
+	padding-right:20px;
 }
 #contenuCata {
 	margin-left:450px;
@@ -4922,5 +4952,12 @@ a:hover.lienPanier,a:hover.lienCompte {
 
 #right-but:hover{
     background-position: -40px -1px;
+}
+
+.index_post_content{
+}
+
+.col23-links li{
+    float:left;
 }
 

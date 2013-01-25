@@ -1,7 +1,9 @@
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate_bg.jpg")%>')"">
   <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
     <h3><%=@category.name%></h3>
-    <p class="accrochePage"></p>
+    <p class="accrochePage">
+      <%=@category.desc%>
+    </p>
   </div>
 </div>
 <div id="centreSite" class="body">
@@ -25,7 +27,7 @@
 
     <div class="colM">
       <div>
-        <div class="ImgEnteteGamme">
+        <div class="ImgEnteteGamme" style="display:none;">
           <a href="<%=asset_path("page-gamme-prestige.png")%>" target="_parent">
             <img class="Loupe" src="/images/skins/commun/loupe.png" alt="Loupe" />
             <img src="<%=asset_path("page-gamme-prestige275.png")%>" alt="Gamme Prestige" width="188" height="234" />
@@ -56,11 +58,12 @@
                   </div>
                 </td>
                 <td>
-                  <h3><a href="/winecoolers/<%=w.id%>"><%=w.model%></a></h3>
-                  <p><%= (truncate(strip_tags(w.desc), :length => 100, :omission => '...')).html_safe %></p>
+                  <h3>
+                    <a href="/winecoolers/<%=w.id%>"><%=w.model%></a></h3>
+                  <!--p><%= (truncate(strip_tags(w.desc), :length => 100, :omission => '...')).html_safe %></p-->
                   <a href="/winecoolers/<%=w.id%>" title="<%=w.model%>" class="plusdinfo">
                     <div style="background-color:#d61260;" class="puceCouleur"><img src="/images/skins/commun/puce.png" /></div>
-                    <span>详细</span>
+                    <span>查看详情</span>
                   </a>
                 </td>
               </tr>

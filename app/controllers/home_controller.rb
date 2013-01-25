@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   def index
     @slides = Slide.find(:all,:limit=>6)
     @posts = Post.find(:all,:limit=>6)
-    @winecoolers = Winecooler.find(:all,:limit=>3)
   end
   
   def search

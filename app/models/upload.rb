@@ -4,8 +4,8 @@ class Upload < ActiveRecord::Base
     :url => "/images/photos/:id/:basename_:style.:extension",
     :path => ":rails_root/public/images/photos/:id/:basename_:style.:extension",
     :styles => {
-#    :content=>"600>",
-#    :medium => "400>", 
+    #    :content=>"600>",
+    #    :medium => "400>", 
     :thumb => "190>" }
   belongs_to :winecooler
 
