@@ -2,6 +2,7 @@
 *= require_self
 *= require_tree ./admin
 *= require ./paginate
+*= require jquery.fileupload-ui
 */
 
 
@@ -95,8 +96,8 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .btn-group-vertical>.btn:last-child{-webkit-border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;border-radius:0 0 4px 4px;}
 .btn-group-vertical>.btn-large:first-child{-webkit-border-radius:6px 6px 0 0;-moz-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0;}
 .btn-group-vertical>.btn-large:last-child{-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;}
-[class^="icon-"],[class*=" icon-"]{display:inline-block;width:14px;height:14px;margin-top:1px;*margin-right:.3em;line-height:14px;vertical-align:text-top;background-image:url("<%=asset_path("admin/upload/glyphicons-halflings.png")%>");background-position:14px 14px;background-repeat:no-repeat;}
-.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"]{background-image:url("<%=asset_path("admin/upload/glyphicons-halflings-white.png")%>");}
+[class^="icon-"],[class*=" icon-"]{display:inline-block;width:14px;height:14px;margin-top:1px;*margin-right:.3em;line-height:14px;vertical-align:text-top;background-image:url("../img/glyphicons-halflings.png");background-position:14px 14px;background-repeat:no-repeat;}
+.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"]{background-image:url("/images/admin/glyphicons-halflings-white.png");}
 .icon-glass{background-position:0 0;}
 .icon-music{background-position:-24px 0;}
 .icon-search{background-position:-48px 0;}
@@ -237,87 +238,3 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .icon-filter{background-position:-408px -144px;}
 .icon-briefcase{background-position:-432px -144px;}
 .icon-fullscreen{background-position:-456px -144px;}
-
-/*
- * jQuery File Upload UI Plugin CSS 6.3
- * https://github.com/blueimp/jQuery-File-Upload
- *
- * Copyright 2010, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
-
-.fileinput-button {
-  position: relative;
-  overflow: hidden;
-  float: left;
-  margin-right: 4px;
-}
-.fileinput-button input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  border: solid transparent;
-  border-width: 0 0 100px 200px;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  -moz-transform: translate(-300px, 0) scale(4);
-  direction: ltr;
-  cursor: pointer;
-}
-.fileupload-buttonbar .btn,
-.fileupload-buttonbar .toggle {
-  margin-bottom: 5px;
-}
-.files .progress {
-  width: 200px;
-}
-.progress-animated .bar {
-  background: url(<%=asset("admin/upload/progressbar.gif")%>) !important;
-  filter: none;
-}
-.fileupload-loading {
-  position: absolute;
-  left: 50%;
-  width: 128px;
-  height: 128px;
-  background: url(<%=asset("admin/upload/loading.gif")%>) !important;
-  display: none;
-}
-.fileupload-processing .fileupload-loading {
-  display: block;
-}
-
-/* Fix for IE 6: */
-*html .fileinput-button {
-  line-height: 22px;
-  margin: 1px -3px 0 0;
-}
-
-/* Fix for IE 7: */
-*+html .fileinput-button {
-  margin: 1px 0 0 0;
-}
-
-@media (max-width: 480px) {
-  .files .btn span {
-    display: none;
-  }
-  .files .preview * {
-    width: 40px;
-  }
-  .files .name * {
-    width: 80px;
-    display: inline-block;
-    word-wrap: break-word;
-  }
-  .files .progress {
-    width: 20px;
-  }
-  .files .delete {
-    width: 60px;
-  }
-}
