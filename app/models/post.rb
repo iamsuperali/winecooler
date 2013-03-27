@@ -1,6 +1,7 @@
 #coding: utf-8
 class Post < ActiveRecord::Base
   belongs_to :user
+  default_scope order('top desc,created_at DESC')
   attr_accessible :order,
     :status,
     :category_id,
@@ -13,9 +14,9 @@ class Post < ActiveRecord::Base
     :grade,
     :subject,
     :author,
-    :approved
+    :approved,
+    :top
   has_attached_file :attachment
-  before_create :auto_approve_when_admin
   
   COMMENT_STATUS_LIST = [["允许评论",1],["不允许评论",0]]
   BOOLEAN_LIST = [["否",false],["是",true]]
@@ -38,9 +39,5 @@ class Post < ActiveRecord::Base
   
   
   private
-  
-  def auto_approve_when_admin
-    self.approved = true if self.user.is? :超级管理员
-  end
   
 end

@@ -15,6 +15,11 @@
     <%= f.label "标题" %>:
     <%= f.text_field :title,:style=>"width:500px;" %>
   </div>
+
+  <div class="field">
+    <%= f.label "置顶" %>:
+    <%= f.check_box :top %>
+  </div>
   <div class="field">
     <%= f.label "正文" %><br />
     <%= f.cktext_area :content,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109082425) do
+ActiveRecord::Schema.define(:version => 20130327144928) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130109082425) do
     t.integer  "subject"
     t.string   "author",         :limit => 20
     t.boolean  "approved",                     :default => false, :null => false
+    t.boolean  "top"
   end
 
   create_table "slides", :force => true do |t|

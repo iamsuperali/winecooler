@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require home
 //= require text_cut
-//= require cloud-carousel.1.0.5.min
