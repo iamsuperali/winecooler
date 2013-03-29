@@ -81,7 +81,7 @@
 
                 <% @uploads.each do |u| %>
                   <% count+=1 %>
-                  <%url_string = u.upload.url(:content)%>
+                  <%url_string = u.upload.url(:thumb)%>
                   <li>
                     <a href="javascript:lanceZoomNoir(<%=count%>);" target="_self">
                       <img src="<%=url_string%>" alt="slide <%=count %>" />
@@ -145,7 +145,7 @@
             <% count = 0 %>
             <% @uploads.each do |u| %>
               <% count +=1 %>
-              <%url_string = u.upload.url(:medium)%>
+              <%url_string = u.upload.url(:thumb)%>
               <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="<%=u.winecooler.model%>" id="lienImg<%=count%>">
                 <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
               </a>
