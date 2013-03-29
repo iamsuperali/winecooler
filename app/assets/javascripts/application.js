@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require home
 //= require text_cut
+//= require jquery.pikachoose

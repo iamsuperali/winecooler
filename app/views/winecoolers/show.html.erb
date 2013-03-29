@@ -1,31 +1,11 @@
 <script type="text/javascript">
   $(document).ready(function(){
-    window.addEvent("domready", function() {
-      var ex6Carousel = new iCarousel("example_6_content", {
-        idPrevious: "example_6_previous",
-        idNext: "example_6_next",
-        idToggle: "undefined",
-        item: {
-          klass: "example_6_item",
-          size: 640
-        },
-        animation: {
-          type: "scroll",
-          duration: 1000,
-          amount: 1
-        }
-      });
-
-      $("thumb0").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(0)});
-      $("thumb1").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(1)});
-      $("thumb2").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(2)});
-      $("thumb3").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(3)});
-      $("thumb4").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(4)});
-      $("thumb5").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(5)});
-      $("thumb6").addEvent("click", function(event){new Event(event).stop();ex6Carousel.goTo(6)});
-    });
-			
+    $("#pikame").PikaChoose({
+    showCaption: false,
+    showTooltips: false,
+    text: {previous: "", next: "" }
   });
+});
 </script>
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
   <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
@@ -94,101 +74,90 @@
 
         <div class="sliderProduit">
 
-          <div id="example_6">
+          <div class="pikachoose">
             <% if @uploads && @uploads.length > 0  %>
-              <ul id="example_6_content">
+              <ul id="pikame">
                 <% count=0 %>
+
                 <% @uploads.each do |u| %>
                   <% count+=1 %>
-                  <%url_string = u.upload.url(:thumb)%>
-                  <li class="example_6_item">
+                  <%url_string = u.upload.url(:content)%>
+                  <li>
                     <a href="javascript:lanceZoomNoir(<%=count%>);" target="_self">
-                      <img src="<%=url_string%>" alt="slide <% count+=1 %>" height="190" />
+                      <img src="<%=url_string%>" alt="slide <%=count %>" />
                     </a>
                   </li>
-                </ul>
-              <%end%>
+                <%end%>
 
-              <div id="example_6_frame">
-                <ul>
-                  <% count=0 %>
-                  <% @uploads.each do |u| %>
-                    <%url_string = u.upload.url(:thumb)%>
-                    <li><a href="#"><img id="thumb<%=count%>" src="<%=url_string%>" alt="thumbnail 1" height="60" /></a></li>
-                    <% count+=1 %>
-                  <%end%>  
-                </ul>
-              </div>
-
+              </ul>
             <%end%>
           </div>
-        </div>
 
-        <div class="produitCaracteristiques">
-          <div class="ProduitDescriptionDetail">
-            <div class="AccessoiresProduit" style="background-color:#d61260;">
-              配件:
+          <div class="produitCaracteristiques">
+            <div class="ProduitDescriptionDetail">
+              <div class="AccessoiresProduit" style="background-color:#d61260;">
+                配件:
+              </div>
+              <table class="tableAccessoires" style="display:none;">
+                <tr>
+                  <td><a href="/P-61-63-A1-clavip01.html"><img src="/donnees/produits/70x61/la-sommeliere-cave-vin-accessoires-clavip01-02.jpg" alt="CLAVIP01"></a></td>
+                  <td><a href="/P-61-63-A1-clavip01.html"><b>CLAVIP01</b>
+
+                      <br />Clayette Chêne
+                    </a></td>
+                </tr>
+              </table>
             </div>
-            <table class="tableAccessoires" style="display:none;">
-              <tr>
-                <td><a href="/P-61-63-A1-clavip01.html"><img src="/donnees/produits/70x61/la-sommeliere-cave-vin-accessoires-clavip01-02.jpg" alt="CLAVIP01"></a></td>
-                <td><a href="/P-61-63-A1-clavip01.html"><b>CLAVIP01</b>
+            <div id="scroller-header" data-color="#d61260" >
+              <a href="#panel-1" rel="panel" class="selected" >简介</a>
+              <!--a href="#panel-2" rel="panel">其他1</a>
+              <a href="#panel-3" rel="panel">其他2</a-->
+            </div>
+            <div id="scroller-body">
+              <div id="mask">
+                <div id="panel">
+                  <div id="panel-1">
+                    <table class="caracteristiquesProduitDetail">
+                      <tr>
+                        <td width="50%">
+                          <%=@winecooler.desc.html_safe%>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div id="panel-2">
+                    <p>
 
-                    <br />Clayette Chêne
-                  </a></td>
-              </tr>
-            </table>
-          </div>
-          <div id="scroller-header" data-color="#d61260" >
-            <a href="#panel-1" rel="panel" class="selected" >简介</a>
-            <!--a href="#panel-2" rel="panel">其他1</a>
-            <a href="#panel-3" rel="panel">其他2</a-->
-          </div>
-          <div id="scroller-body">
-            <div id="mask">
-              <div id="panel">
-                <div id="panel-1">
-                  <table class="caracteristiquesProduitDetail">
-                    <tr>
-                      <td width="50%">
-                        <%=@winecooler.desc.html_safe%>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <div id="panel-2">
-                  <p>
+                    </p>
+                  </div>
+                  <div id="panel-3" style="padding-top:7px;">
 
-                  </p>
-                </div>
-                <div id="panel-3" style="padding-top:7px;">
-
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!--配件预留位置
-      <input type="hidden" id="rubriqueProduitEnCours" value="30"-->
-      <div style="display:none;">
-        <% if @uploads && @uploads.length > 0  %>
-          <% count = 0 %>
-          <% @uploads.each do |u| %>
-            <% count +=1 %>
-            <%url_string = u.upload.url(:thumb)%>
-            <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="<%=u.winecooler.model%>" id="lienImg<%=count%>">
-              <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
-            </a>
+        <!--配件预留位置
+        <input type="hidden" id="rubriqueProduitEnCours" value="30"-->
+        <div style="display:none;">
+          <% if @uploads && @uploads.length > 0  %>
+            <% count = 0 %>
+            <% @uploads.each do |u| %>
+              <% count +=1 %>
+              <%url_string = u.upload.url(:medium)%>
+              <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="<%=u.winecooler.model%>" id="lienImg<%=count%>">
+                <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
+              </a>
+            <%end%>
+
           <%end%>
 
-        <%end%>
+        </div>
+        <br style="clear: both;" />
 
       </div>
-      <br style="clear: both;">
-
     </div>
-  </div>
-  <div style="clear:both;" ></div>
+    <div style="clear:both;" ></div>
 
-</div>
+  </div>
