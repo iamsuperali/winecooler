@@ -31,8 +31,8 @@
 
   <tbody>
     <% @categories.each do |category| %>
-      <tr id="item_<%= category.id %>">
-        <th scope="row"class="sortable-cell"><%= category.name %></th>
+      <tr id="item_<%= category.id %>"  class="sort-row">
+        <th scope="row" class="spec"><span class="sortable-item"><%= category.name %></span></th>
         <td><%= image_tag category.bg.url(:thumb) %></td>
         <td class="action-link"><%= format_status(category.status) %></td>
         <td class="action-link"><%= link_to '编辑', edit_category_path(category) %></td>

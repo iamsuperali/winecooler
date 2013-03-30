@@ -1,5 +1,6 @@
 #coding: utf-8
 class SlidesController < ApplicationController
+  load_and_authorize_resource
   layout "admin"
   # GET /slides
   # GET /slides.json

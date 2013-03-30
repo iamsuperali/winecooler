@@ -1,5 +1,6 @@
 #coding: utf-8
 class PagesController < ApplicationController
+  load_and_authorize_resource
   layout "admin"
   # GET /pages
   # GET /pages.json

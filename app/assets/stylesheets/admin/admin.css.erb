@@ -180,12 +180,6 @@ table.admin {
     width:50px;
 }
 
-.admin .sortable-cell{
-    border-left: 1px solid #C1DAD7;
-    border-top: 0;
-    background: #fff url(<%=asset_path "admin/dorg_drag_cell.png"%>) no-repeat 5px 8px;
-    font: bold 10px;
-}
 
 .admin caption{
    color:#ccc;  
@@ -455,3 +449,25 @@ background-color: whiteSmoke;
 border-color: #DDD;
 cursor: not-allowed;
 }
+
+/*拖拽排序*/
+ul#sortable li{
+    margin:10px 20px 0 10px;
+}
+
+.sortable-item{
+    padding-left:20px;
+    background: #fff url(<%=asset_path "admin/dorg_drag_cell.png"%>) no-repeat 0px 3px;
+    height:20px;
+    display:inline-block;
+}
+
+.sortable-list{
+    padding-left:20px;
+    background: #fff url(<%=asset_path "admin/dorg_drag_cell.png"%>) no-repeat 0px 3px;
+}
+
+.sort-row{
+    cursor: move;
+}
+

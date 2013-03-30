@@ -1,33 +1,14 @@
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#sortable tbody").sortable({
-      items: 'tr',
-      update: function(){
-        $.ajax({
-          type: 'post',
-          data: $('#sortable  tbody').sortable('serialize'),
-          dataType: 'script',
-          complete: function(request){
-            $('#sortable').effect('highlight');
-          },
-          url: '/winecoolers/sort?id=<%=params[:id]%>'})
-      }
-    }).disableSelection();
-  });
-</script> 
-
 <h3>红酒柜列表</h3>
 
 <%=form_tag '', :method => :get%>
 <fieldset style="clear:both">
   <legend>筛选</legend>
-  <%= select :winecooler,:category_id,Category.all.collect {|c| [ c.name, c.id ] },{:include_blank=>"请选择.."} %>
+  <%= select "category","id",Category.all.collect {|c| [ c.name, c.id ] },{:include_blank=>"全部.."} %>
   <%=  submit_tag "确定"%>
 </fieldset>
 </form>
 
 <table class="admin" id="sortable">
-  <caption>Tip:可拖拽排序</caption>
   <thead>
     <tr>
       <th>分类</th>
@@ -38,7 +19,7 @@
   <tbody>
     <% @winecoolers.each do |c| %>
       <tr id="item_<%= c.id %>">
-        <td class="sortable-cell"><%= c.category.name %></td>
+        <td class="spec"><%= c.category.name %></td>
         <td><%= c.model %></td>
         <td class="action-link"><%= link_to '查看', c %></td>
         <td class="action-link"><%= link_to '编辑', edit_winecooler_path(c) %></td>
@@ -49,6 +30,7 @@
 </table>
 
 <br />
+<%= will_paginate @winecoolers,:previous_label=>"上一页",:next_label=>"下一页",:class=>"apple_pagination"  %>
 <%= link_to '新增红酒柜', new_winecooler_path %>
 
 

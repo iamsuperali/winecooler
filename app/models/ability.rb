@@ -7,7 +7,7 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     can :manage, :all if user.is? :超级管理员
-    can [:show], [Category, Post]
+    can [:show], [Category,Post,Page,Winecooler]
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

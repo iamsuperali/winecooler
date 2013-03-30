@@ -1,41 +1,58 @@
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#sortable').sortable({
-      update: function(){
-        $.ajax({
-          type: 'post',
-          data: $('#sortable').sortable('serialize'),
-          dataType: 'script',
-          complete: function(request){
-            $('#sortable-wrapper').effect('highlight');
-          },
-          url: '/winecoolers/sort?id=<%=params[:id]%>'})
-      }
+<%if @category%>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#sortable tbody").sortable({
+        items: 'tr',
+        update: function(){
+          $.ajax({
+            type: 'post',
+            data: $('#sortable  tbody').sortable('serialize'),
+            dataType: 'script',
+            complete: function(request){
+              $('#sortable').effect('highlight');
+            },
+            url: '/winecoolers/sort?category_id=<%=@category.id%>'})
+        }
+      }).disableSelection();
     });
-  });
-</script>  
+  </script> 
+<%end%>
 
+<h3>红酒柜排序</h3>
 
 <%=form_tag '', :method => :get%>
 <fieldset style="clear:both">
-  <legend>请选择需要排序的类别</legend>
-  <%= select_tag :id,options_from_collection_for_select(Category.all,"id","name") %>
+  <legend>筛选</legend>
+  <%= select :category,:id,Category.all.collect {|c| [ c.name, c.id ] },{:include_blank=>"请选择.."} %>
   <%=  submit_tag "确定"%>
 </fieldset>
 </form>
 
-<fieldset style="clear:both" id="sortable-wrapper">
-  <legend>请通过拖拽排序</legend>
-  <% if @category %>
-    <ul id="sortable" style="cursor: move">
+<% if @category %>
+  <table class="admin" id="sortable">
+    <caption>Tip:可拖拽排序</caption>
+    <thead>
+      <tr>
+        <th>型号</th>
+        <th>分类</th>
+        <th>图片</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @category.winecoolers.each do |w| %>
-        <li id="item_<%= w.id %>" class="ui-state-default">
-          <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-          <%= w.model %>
+        <tr id="item_<%= w.id %>" class="sort-row">
+          <td class="spec">
+            <span class="sortable-item" style="float:left;"><%= w.model %></span>
+          </td>
+          <td><%= w.category.name %></td>
           <%url_string = w.uploads.first.upload.url(:thumb)%>
-          <img src="<%=url_string%>" width="40px" />
-        </li>
+          <td><img src="<%=url_string%>" width="40px" /></td>
+        </tr>
       <% end %>
-    </ul>
-  </fieldset>
+    </tbody>
+  </table>
+
 <%end%>
+
+
+

@@ -1,14 +1,15 @@
 #coding: utf-8
 class WinecoolersController < ApplicationController
+  load_and_authorize_resource
   layout "admin"
   # GET /winecoolers
   # GET /winecoolers.json
   def index
-    unless params[:winecooler] && params[:winecooler][:category_id] && !params[:winecooler][:category_id].blank?
-      @winecoolers = Winecooler.all
+    unless params[:category] && params[:category][:id] && !params[:category][:id].blank?
+      @winecoolers = Winecooler.paginate(:page => params[:page], :per_page =>10)
     else
-      category = Category.find(params[:winecooler][:category_id])
-      @winecoolers = category.winecoolers if category
+      @category = Category.find(params[:category][:id])
+      @winecoolers = @category.winecoolers.paginate(:page => params[:page], :per_page =>10) if @category
     end
     
 
@@ -101,7 +102,7 @@ class WinecoolersController < ApplicationController
   end
   
   def sort
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
     @category.winecoolers.each do | w |
       w.position = params["item"].index(w.id.to_s)+1
       w.save
@@ -110,8 +111,8 @@ class WinecoolersController < ApplicationController
   end
   
   def sequence
-    if params[:id]
-      @category = Category.find(params[:id])
+    if params[:category] && !params[:category][:id].blank?
+      @category = Category.find(params[:category][:id])
     end
   end
 end

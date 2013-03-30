@@ -1,5 +1,6 @@
 #coding: utf-8
 class UploadsController < ApplicationController
+  load_and_authorize_resource
   layout "admin"
   # GET /uploads
   # GET /uploads.json
