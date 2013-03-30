@@ -4,7 +4,13 @@ class WinecoolersController < ApplicationController
   # GET /winecoolers
   # GET /winecoolers.json
   def index
-    @winecoolers = Winecooler.all
+    unless params[:winecooler] && params[:winecooler][:category_id] && !params[:winecooler][:category_id].blank?
+      @winecoolers = Winecooler.all
+    else
+      category = Category.find(params[:winecooler][:category_id])
+      @winecoolers = category.winecoolers if category
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -91,6 +97,21 @@ class WinecoolersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to winecoolers_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def sort
+    @category = Category.find(params[:id])
+    @category.winecoolers.each do | w |
+      w.position = params["item"].index(w.id.to_s)+1
+      w.save
+    end
+    render :nothing => true
+  end
+  
+  def sequence
+    if params[:id]
+      @category = Category.find(params[:id])
     end
   end
 end

@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#sortable').sortable({
+      update: function(){
+        $.ajax({
+          type: 'post',
+          data: $('#sortable').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request){
+            $('#sortable-wrapper').effect('highlight');
+          },
+          url: '/winecoolers/sort?id=<%=params[:id]%>'})
+      }
+    });
+  });
+</script>  
+
+
+<%=form_tag '', :method => :get%>
+<fieldset style="clear:both">
+  <legend>请选择需要排序的类别</legend>
+  <%= select_tag :id,options_from_collection_for_select(Category.all,"id","name") %>
+  <%=  submit_tag "确定"%>
+</fieldset>
+</form>
+
+<fieldset style="clear:both" id="sortable-wrapper">
+  <legend>请通过拖拽排序</legend>
+  <% if @category %>
+    <ul id="sortable" style="cursor: move">
+      <% @category.winecoolers.each do |w| %>
+        <li id="item_<%= w.id %>" class="ui-state-default">
+          <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+          <%= w.model %>
+          <%url_string = w.uploads.first.upload.url(:thumb)%>
+          <img src="<%=url_string%>" width="40px" />
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+<%end%>

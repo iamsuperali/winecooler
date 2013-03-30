@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327144928) do
+ActiveRecord::Schema.define(:version => 20130330074402) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
     t.string   "name"
     t.integer  "order"
     t.integer  "status"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "bg_file_name"
     t.string   "bg_content_type"
     t.integer  "bg_file_size"
     t.datetime "bg_updated_at"
     t.string   "desc"
+    t.integer  "position",        :default => 0
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -152,9 +153,10 @@ ActiveRecord::Schema.define(:version => 20130327144928) do
     t.integer  "category_id"
     t.string   "model"
     t.string   "desc"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "feature"
+    t.integer  "position",    :default => 0
   end
 
 end

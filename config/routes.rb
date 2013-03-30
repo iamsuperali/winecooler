@@ -1,10 +1,19 @@
 FishCms::Application.routes.draw do
 
-  resources :winecoolers
+  resources :winecoolers do
+    collection do
+      get :sequence
+      post :sort
+    end
+  end
   resources :slides
   resources :pages
   resources :events
-  resources :categories 
+  resources :categories do
+    collection do
+      post :sort
+    end
+  end 
   resources :links
   resources :uploads
 

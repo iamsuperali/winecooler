@@ -53,6 +53,10 @@ body{
   background:url(<%=asset_path "admin/tree/cave.png" %>) no-repeat 4px 4px;
 }
 
+#menu #sort-link{
+  background:url(<%=asset_path "admin/tree/sort.png" %>) no-repeat 4px 4px;
+}
+
 #menu #cates-link{
   background:url(<%=asset_path "admin/tree/cate.png" %>) no-repeat 4px 4px;
 }
@@ -174,6 +178,17 @@ table.admin {
 
 .admin .action-link{
     width:50px;
+}
+
+.admin .sortable-cell{
+    border-left: 1px solid #C1DAD7;
+    border-top: 0;
+    background: #fff url(<%=asset_path "admin/dorg_drag_cell.png"%>) no-repeat 5px 8px;
+    font: bold 10px;
+}
+
+.admin caption{
+   color:#ccc;  
 }
 
 /*导航*/

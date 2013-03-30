@@ -1,25 +1,54 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#sortable tbody").sortable({
+      items: 'tr',
+      update: function(){
+        $.ajax({
+          type: 'post',
+          data: $('#sortable  tbody').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request){
+            $('#sortable').effect('highlight');
+          },
+          url: '/winecoolers/sort?id=<%=params[:id]%>'})
+      }
+    }).disableSelection();
+  });
+</script> 
+
 <h3>红酒柜列表</h3>
 
-<table class="admin">
-  <tr>
-    <th>分类</th>
-    <th>型号</th>
-    <th colspan="3" ></th>
-  </tr>
+<%=form_tag '', :method => :get%>
+<fieldset style="clear:both">
+  <legend>筛选</legend>
+  <%= select :winecooler,:category_id,Category.all.collect {|c| [ c.name, c.id ] },{:include_blank=>"请选择.."} %>
+  <%=  submit_tag "确定"%>
+</fieldset>
+</form>
 
-  <% @winecoolers.each do |c| %>
+<table class="admin" id="sortable">
+  <caption>Tip:可拖拽排序</caption>
+  <thead>
     <tr>
-      <td class="spec"><%= c.category.name %></td>
-      <td><%= c.model %></td>
-      <td class="action-link"><%= link_to '查看', c %></td>
-      <td class="action-link"><%= link_to '编辑', edit_winecooler_path(c) %></td>
-      <td class="action-link"><%= link_to '删除', c, method: :delete, data: { confirm: '您确定?' } %></td>
+      <th>分类</th>
+      <th>型号</th>
+      <th colspan="3" ></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @winecoolers.each do |c| %>
+      <tr id="item_<%= c.id %>">
+        <td class="sortable-cell"><%= c.category.name %></td>
+        <td><%= c.model %></td>
+        <td class="action-link"><%= link_to '查看', c %></td>
+        <td class="action-link"><%= link_to '编辑', edit_winecooler_path(c) %></td>
+        <td class="action-link"><%= link_to '删除', c, method: :delete, data: { confirm: '您确定?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br />
-
 <%= link_to '新增红酒柜', new_winecooler_path %>
 
 

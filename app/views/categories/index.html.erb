@@ -1,22 +1,45 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#sortable tbody").sortable({
+      items: 'tr',
+      update: function(){
+        $.ajax({
+          type: 'post',
+          data: $('#sortable  tbody').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request){
+            $('#sortable').effect('highlight');
+          },
+          url: '/categories/sort'})
+      }
+    }).disableSelection();
+  });
+</script> 
+
 <h3>分类列表</h3>
 
-<table class="admin">
-  <tr>
-    <th>名称</th>
-    <th>背景</th>
-    <th>状态</th>
-    <th colspan="2" >操作</th>
-  </tr>
-
-  <% @categories.each do |category| %>
+<table class="admin" id="sortable">
+  <caption>Tip:可拖拽排序</caption>
+  <thead>
     <tr>
-      <th scope="row"class="spec"><%= category.name %></th>
-      <td><%= image_tag category.bg.url(:thumb) %></td>
-      <td class="action-link"><%= format_status(category.status) %></td>
-      <td class="action-link"><%= link_to '编辑', edit_category_path(category) %></td>
-      <td class="action-link"><%= link_to '删除', category, method: :delete, data: { confirm: '确定删除?' } %></td>
+      <th>名称</th>
+      <th>背景</th>
+      <th>状态</th>
+      <th colspan="2" >操作</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr id="item_<%= category.id %>">
+        <th scope="row"class="sortable-cell"><%= category.name %></th>
+        <td><%= image_tag category.bg.url(:thumb) %></td>
+        <td class="action-link"><%= format_status(category.status) %></td>
+        <td class="action-link"><%= link_to '编辑', edit_category_path(category) %></td>
+        <td class="action-link"><%= link_to '删除', category, method: :delete, data: { confirm: '确定删除?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br />
