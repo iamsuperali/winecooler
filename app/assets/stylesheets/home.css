@@ -2426,7 +2426,7 @@ header.headerLangen_EN nav ul li#ssMenuGammePro {
 }
 .Header nav ul li.ssMenu ul li a:hover,.Header nav ul li.ssMenu ul li a.active,.Header nav ul li#ssMenuGammePro ul li a:hover,.Header nav ul li#ssMenuGammePro ul li a.active {
     background-image:url('/images/skins/commun/btnSsMenuGammeProA.jpg');
-    width:216px;
+    width:164px;
     height:32px;
     line-height:32px;
     border:0 solid #FFF;
