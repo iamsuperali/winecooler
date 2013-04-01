@@ -1,0 +1,27 @@
+<%= form_for(@accessory) do |f| %>
+  <% if @accessory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accessory.errors.count, "error") %> 因为以下错误不能提交:</h2>
+
+      <ul>
+      <% @accessory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :model,"型号" %>:
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image,"图片" %>:
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "确定" %>
+  </div>
+<% end %>

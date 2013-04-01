@@ -1,9 +1,16 @@
 FishCms::Application.routes.draw do
 
+  resources :accessories
+
   resources :winecoolers do
     collection do
       get :sequence
       post :sort
+    end
+    
+    member do
+      get :accessory
+      post :update_accessories
     end
   end
   resources :slides

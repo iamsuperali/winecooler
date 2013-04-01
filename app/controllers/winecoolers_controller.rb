@@ -115,4 +115,31 @@ class WinecoolersController < ApplicationController
       @category = Category.find(params[:category][:id])
     end
   end
+  
+  def accessory
+    @winecooler = Winecooler.find(params[:id])
+    @accessories = Accessory.all
+  end
+  
+  def update_accessories
+    @winecooler = Winecooler.find(params[:id])
+    
+    if params[:winecooler]
+      @winecooler.accessories.clear
+      params[:winecooler][:accessories].each do |a|
+        cur_accessory =  Accessory.find(a)
+        @winecooler.accessories << cur_accessory if cur_accessory
+      end
+    end
+    
+    respond_to do |format|
+      if @winecooler.save
+        format.html { redirect_to winecoolers_url, notice: '选择配件成功.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "accessory" }
+        format.json { render json: @winecooler.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

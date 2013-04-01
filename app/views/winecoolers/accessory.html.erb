@@ -1,0 +1,36 @@
+<h3>为<%=@winecooler.model%>选择配件</h3>
+<%= form_tag update_accessories_winecooler_path(@winecooler),:method => :post do %>
+  <% if @winecooler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@winecooler.errors.count, "error") %> prohibited this cafe from being saved:</h2>
+
+      <ul>
+        <% @winecooler.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <ul id="accessories-list">
+    <%count = 0%>
+    <%@accessories.each do |a|%>
+      <%count+=1%>
+      <li>
+        <%= label_tag "winecooler[accessories][#{count}]",a.model %>:
+        <%= image_tag a.image.url(:thumb),:width=>"60",:height=>"60" %>
+        <%= check_box_tag "winecooler[accessories][#{count}]",
+          a.id,
+          @winecooler.accessories.include?(a),
+          {:name => "winecooler[accessories][]"} %>
+      </li>
+    <%end%>
+  </ul>
+  <div class="actions" style="clear:both;">
+    <%= submit_tag "确定" %>
+  </div>
+<% end %>
+
+<%= link_to '取消', winecoolers_path %>

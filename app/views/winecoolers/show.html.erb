@@ -1,11 +1,11 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $("#pikame").PikaChoose({
-    showCaption: false,
-    showTooltips: false,
-    text: {previous: "", next: "" }
+      showCaption: false,
+      showTooltips: false,
+      text: {previous: "", next: "" }
+    });
   });
-});
 </script>
 <% content_for :title, "法国拉苏米亚葡萄酒柜（La Sommelière）- #{@winecooler.category.name} - #{@winecooler.model}" %>
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
@@ -63,7 +63,7 @@
                 <td width="50%">
                   <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=iamsuperali',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','',
                      '<%= HomeHelper::ROOT + @winecooler.uploads.first.upload.url(:thumb) if @winecooler.uploads && @winecooler.uploads.length > 0%>',
-                     '推荐法国拉苏米亚（La Sommeliere）葡萄酒柜，型号：LS16<%=@winecooler.model%>',
+                     '推荐法国拉苏米亚（La Sommeliere）葡萄酒柜，型号：<%=@winecooler.model%>',
                      '',
                      'utf-8'));">
                     <img src="<%=asset_path("weibo.png")%>" alt="分享到微博" title="分享到微博"><span>分享到微博</span></a>
@@ -94,20 +94,22 @@
             <%end%>
           </div>
 
+          <% check_accessory = @winecooler.accessories.length  %>
           <div class="produitCaracteristiques">
             <div class="ProduitDescriptionDetail">
-              <div class="AccessoiresProduit" style="background-color:#d61260;">
-                配件:
-              </div>
-              <!--table class="tableAccessoires" style="display:none;">
-                <tr>
-                  <td><a href="/P-61-63-A1-clavip01.html"><img src="/donnees/produits/70x61/la-sommeliere-cave-vin-accessoires-clavip01-02.jpg" alt="CLAVIP01"></a></td>
-                  <td><a href="/P-61-63-A1-clavip01.html"><b>CLAVIP01</b>
-
-                      <br />Clayette Chêne
-                    </a></td>
-                </tr>
-              </table-->
+              <%if check_accessory> 0%>
+                <div class="AccessoiresProduit" style="background-color:#d61260;">
+                  配件:
+                </div>
+                <table class="tableAccessoires">
+                  <% @winecooler.accessories.each do |a| %>
+                    <tr>
+                      <td><%= image_tag a.image.url(:thumb),:width=>"60",:height=>"60" %></td>
+                      <td><b><%= a.model %></b></td>
+                    </tr>
+                  <%end%>
+                <%end%>
+              </table>
             </div>
             <div id="scroller-header" data-color="#d61260" >
               <a href="#panel-1" rel="panel" class="selected" style="pointer-events: none;" >产品简介</a>
@@ -146,7 +148,7 @@
             <% count = 0 %>
             <% @uploads.each do |u| %>
               <% count +=1 %>
-              <%url_string = u.upload.url(:thumb)%>
+              <%url_string = u.upload.url(:content)%>
               <a href="<%=url_string%>" rel="gallery1" class="zoomslide gallery1" title="<%=u.winecooler.model%>" id="lienImg<%=count%>">
                 <img class="cloudcarousel shadow item" src="<%=url_string%>" alt="" border="0" />
               </a>

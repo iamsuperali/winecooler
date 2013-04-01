@@ -1,0 +1,22 @@
+<h3>配件列表</h3>
+
+<table class="admin">
+  <tr>
+    <th>型号</th>
+    <th>图片</th>
+    <th colspan="2">操作</th>
+  </tr>
+
+<% @accessories.each do |accessory| %>
+  <tr>
+    <td scope="row"class="spec"><%= accessory.model %></td>
+    <td><%= image_tag accessory.image.url(:thumb),:width=>"60",:height=>"60" %></td>
+    <td class="action-link"><%= link_to '修改', edit_accessory_path(accessory) %></td>
+    <td class="action-link"><%= link_to '删除', accessory, method: :delete, data: { confirm: '您确定？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新增配件', new_accessory_path %>

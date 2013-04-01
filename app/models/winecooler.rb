@@ -4,4 +4,7 @@ class Winecooler < ActiveRecord::Base
   belongs_to :category
   acts_as_list :scope => :category
   default_scope order('position')
+  
+  has_many :winecooler_accessories
+  has_many :accessories, :through => :winecooler_accessories
 end
