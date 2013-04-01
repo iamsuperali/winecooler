@@ -12,6 +12,6 @@ module HomeHelper
     return return_string.html_safe
   end
   
-  ROOT = "http://localhost:3000"
+  ROOT = "http://:173.255.249.226:3000"
   
 end

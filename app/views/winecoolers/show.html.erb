@@ -7,10 +7,11 @@
   });
 });
 </script>
+<% content_for :title, "法国拉苏米亚葡萄酒柜（La Sommelière）- #{@winecooler.category.name} - #{@winecooler.model}" %>
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
   <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
     <h3><%=@winecooler.category.name%></h3>
-    <!--p class="accrochePage"></p-->
+    <p class="accrochePage"><%=@winecooler.category.desc%></p>
   </div>
 </div>
 
@@ -62,7 +63,7 @@
                 <td width="50%">
                   <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=iamsuperali',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','',
                      '<%= HomeHelper::ROOT + @winecooler.uploads.first.upload.url(:thumb) if @winecooler.uploads && @winecooler.uploads.length > 0%>',
-                     '深圳拉苏米亚红酒柜<%=@winecooler.model%>,<%=(truncate(strip_tags(@winecooler.desc), :length => 100, :omission => '...')).html_safe %>',
+                     '推荐法国拉苏米亚（La Sommeliere）葡萄酒柜，型号：LS16<%=@winecooler.model%>',
                      '',
                      'utf-8'));">
                     <img src="<%=asset_path("weibo.png")%>" alt="分享到微博" title="分享到微博"><span>分享到微博</span></a>
@@ -109,7 +110,7 @@
               </table>
             </div>
             <div id="scroller-header" data-color="#d61260" >
-              <a href="#panel-1" rel="panel" class="selected" >简介</a>
+              <a href="#panel-1" rel="panel" class="selected" style="pointer-events: none;" >产品简介</a>
               <!--a href="#panel-2" rel="panel">其他1</a>
               <a href="#panel-3" rel="panel">其他2</a-->
             </div>

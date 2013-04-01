@@ -6,16 +6,17 @@
     background-color: #9E388F; }a:hover#id-link5, #links a#id-link5.current {
     background-color: #600119; }a:hover#id-link6, #links a#id-link6.current {
     background-color: #E8CB9C; }
-  </style>	
+  </style>
+  <% content_for :title, "法国拉苏米亚葡萄酒柜（La Sommelière）- 在家中享用美酒vos vins sont bien chez vous" %>
   <div id="slider">
-  <h1 class="accrocheSlider">拉苏米亚 <br><span>红酒柜</span></h1>
+  <h1 class="accrocheSlider">拉苏米亚 <br><span>葡萄酒柜</span></h1>
   <img src="/images/skins/commun/loader.gif" style='display:none;' />
   <div id="mask-gallery">
     <ul id="gallery">
       <%s_count = 1%>
       <%@slides.each do |s|%>
         <li class="item<%=s_count%>">
-          <a href="<%s.link%>"  class="">
+          <a href="<%=s.link%>"  class="">
             <%= image_tag s.image.url,:width=>"1300",:height=>"448",:style=>"display:none;" %>
           </a>
         </li>
@@ -66,16 +67,16 @@
       <img src="images/skins/commun/cart.jpg" alt="Carte" style="margin-bottom:10px; cursor:default;">
       <div class="titreMoyen">
         <span>
-          公司简介				
+          品牌简介				
         </span>
-        <br><span class="txtGris">拉苏米亚红酒柜</span>
+        <!--br><span class="txtGris">拉苏米亚红酒柜</span-->
       </div>
       <p>
-        拉苏米亚，法国著名品牌，专注于红酒柜、红酒周边产品，分销商网络已遍布全球。
+        <a href="/pages/1" id="brand-desc">拉苏米亚，法国著名品牌，专注于红酒柜、红酒周边产品，分销商网络已遍布全球。</a>
       </p>
       <ul class="col23-links">
         <li><a href="/pages/3" style="padding-right:20px;">到哪购买?</a></li>
-        <li><a href="/pages/4">成为分销商</a></li>
+        <li><a href="/pages/3">成为分销商</a></li>
       </ul>
       
     </div>
