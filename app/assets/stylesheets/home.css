@@ -1,3 +1,29 @@
+@charset "utf-8";
+/* 精简版 CSS reset */
+section,article,aside,header,footer,nav,figure{display:block}
+body,h1,h2,h3,h4,h5,h6,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,figure,select{margin:0;padding:0}
+body,button,input,select,textarea{font:12px/1.5 arial}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-size:100%}
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp{font-family:courier new,courier,monospace}
+small{font-size:12px}
+ul,ol{list-style:none}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+legend{color:#000}
+fieldset,img{border:0}
+table{border-collapse:collapse;border-spacing:0}
+input::-moz-focus-inner,button::-moz-focus-inner{border:0;padding:0;outline:0}
+iframe {vertical-align: top;}
+*html{zoom:expression(function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true)}(this))}
+i {font-style:normal;}
+s {text-decoration: none;}
+.group,.clear{*zoom:1}
+.group:after,.clear:after{content:'\20';display:block;clear:both;height:0}
+body {color: #333;background-color: #fff;}/*  |xGv00|f175c4a24107ac3d2906af7578709f33 */
+
 .colorpicker {
     width:356px;
     height:176px;
@@ -2444,12 +2470,20 @@ header.headerLangen_EN nav ul li#ssMenuGammePro {
 }
 
 .Social a{
-    width: 80px;
-    height: 20px;
+    width: 58px;
+    height: 18px;
     display:block;
     float:left;
     margin-left:10px;
-    background: url('/images/fav_bg.png')
+    background: url('/images/fav_bg.png');
+    padding:2px 0px 0px 22px;
+    text-decoration:none;
+    color:#6e6e6e;
+    font-size:10px/0.5em;
+}
+
+.Social a:hover{
+    color:#ca0034;
 }
 
 #btn-fav:hover{
