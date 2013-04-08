@@ -12,6 +12,6 @@ module HomeHelper
     return return_string.html_safe
   end
   
-  ROOT = "http://173.255.249.226:3000"
+  ROOT = "http://www.lasommeliere.cn"
   
 end
