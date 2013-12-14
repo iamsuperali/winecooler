@@ -19,7 +19,7 @@
   <tbody>
     <% @winecoolers.each do |c| %>
       <tr id="item_<%= c.id %>">
-        <td class="spec"><%= c.category.name %></td>
+        <td class="spec"><%= c.category.name if c.category %></td>
         <td><%= c.model %></td>
         <td class="action-link"><%= link_to '查看', c %></td>
         <td class="action-link"><%= link_to '选择配件', accessory_winecooler_path(c) %></td>
