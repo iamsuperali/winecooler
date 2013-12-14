@@ -7,11 +7,11 @@
     });
   });
 </script>
-<% content_for :title, "法国拉苏米亚葡萄酒柜（La Sommelière）- #{@winecooler.category.name} - #{@winecooler.model}" %>
+<% content_for :title, "法国拉苏米亚葡萄酒柜（La Sommelière）- #{@winecooler.category.name if @winecooler.category } - #{@winecooler.model}" %>
 <div class="bandeauHaut"  style="background-image:url('<%=asset_path("cate1_bg.jpg")%>')">
   <div class="AccrocheListeRub" style="margin-right:-475px; top:24px; width:537px;">
-    <h3><%=@winecooler.category.name%></h3>
-    <p class="accrochePage"><%=@winecooler.category.desc%></p>
+    <h3><%=@winecooler.category.name if @winecooler.category%></h3>
+    <p class="accrochePage"><%=@winecooler.category.desc if @winecooler.category%></p>
   </div>
 </div>
 
@@ -20,7 +20,8 @@
 
     <div id="menuG">
       <ul>
-        <li><span class="titreRubMenuG"><%=@winecooler.category.name%></span>
+        <li><span class="titreRubMenuG"><%=@winecooler.category.name if @winecooler.category%></span>
+          <% if @winecooler.category %>
           <ul>
             <%@winecooler.category.winecoolers.each do |w|%>
               <li>
@@ -29,7 +30,9 @@
                 </a>
               </li>
             <%end%>
-            <br style="clear: both;" />	</ul>
+            <br style="clear: both;" />	
+          </ul>
+          <%end%>
         </li>
       </ul>
 
